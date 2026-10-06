@@ -1,4 +1,7 @@
 build/
 dist/
 *.spec
+*.build/
+*.dist/
+*.onefile-build/
 __pycache__/

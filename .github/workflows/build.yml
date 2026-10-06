@@ -16,10 +16,10 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: '3.12'
-      - name: Install PyInstaller
-        run: pip install pyinstaller
-      - name: Build exe (request admin elevation via UAC)
-        run: pyinstaller --onefile --uac-admin --name TestMode_Check check_bcdedit.py
+      - name: Install Nuitka
+        run: pip install nuitka ordered-set zstandard
+      - name: Build exe with Nuitka (request admin elevation via UAC)
+        run: python -m nuitka --onefile --assume-yes-for-downloads --windows-uac-admin --output-dir=dist --output-filename=TestMode_Check.exe check_bcdedit.py
       - uses: actions/upload-artifact@v4
         with:
           name: TestMode_Check-windows
